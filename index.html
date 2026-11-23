@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Bone Valley – 3D Physics Tower Defense</title>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"><meta name="theme-color" content="#d9c08a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>Bone Valley – 3D Physics Tower Defense</title>
 <style>
 *{box-sizing:border-box}body{margin:0;overflow:hidden;font:14px system-ui,sans-serif;background:#d9c08a;color:#f4ead6}canvas{display:block}
 .b{background:rgba(30,24,16,.85);border:1px solid #6b5636;border-radius:8px;padding:6px 10px}
@@ -64,8 +64,58 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;background:rad
 #boul{width:96px;height:96px;border-radius:50%;padding:0;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1;font-size:10.5px;border:3px solid #8a6a3a;overflow:hidden;box-shadow:0 0 14px rgba(232,169,60,.35)}
 #boul:disabled{opacity:.85}#boul .bi{font-size:28px}
 #boul .cdn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;background:rgba(0,0,0,.45)}
+
+/* ---- responsive / touch ---- */
+html,body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent}
+body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+canvas{touch-action:none;outline:none}
+button{touch-action:manipulation}
+#rw .b,#skpick>.b{max-height:96dvh;max-height:calc(100dvh - 8px);overflow:auto}
+#top{padding-left:calc(8px + env(safe-area-inset-left,0px));padding-right:calc(8px + env(safe-area-inset-right,0px))}
+@media (hover:none){#tip{display:none!important}}
+body.cp{font-size:13px}
+body.cp .lb{display:none}
+body.cp #top{gap:4px;padding:calc(4px + env(safe-area-inset-top,0px)) calc(4px + env(safe-area-inset-right,0px)) 4px calc(4px + env(safe-area-inset-left,0px))}
+body.cp .b{padding:3px 7px;border-radius:6px}
+body.cp #top button{padding:4px 8px;font-size:13px}
+body.cp #crr{display:none}
+body.cp #bot{left:0;right:0;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;gap:4px;padding:4px calc(4px + env(safe-area-inset-right,0px)) calc(4px + env(safe-area-inset-bottom,0px)) calc(4px + env(safe-area-inset-left,0px));background:rgba(20,14,8,.55);-webkit-overflow-scrolling:touch}
+body.cp #bot>*,body.cp #builds button{flex:0 0 auto}
+body.cp #builds button{min-width:58px;padding:3px 5px;font-size:10.5px;line-height:1.15}
+body.cp #builds button span{font-size:18px!important}
+body.cp #rep{max-width:90px;font-size:10.5px;line-height:1.1;padding:3px 5px;white-space:normal}
+body.cp #side{display:none;left:calc(6px + env(safe-area-inset-left,0px));top:calc(var(--th,44px) + 4px);width:min(240px,calc(100vw - 12px));max-height:calc(100dvh - var(--th,44px) - var(--bh,60px) - 12px);min-height:0;z-index:9;background:rgba(30,24,16,.96)}
+body.cp #panel{right:calc(6px + env(safe-area-inset-right,0px));top:calc(var(--th,44px) + 4px);width:172px;max-height:calc(100dvh - var(--th,44px) - var(--bh,60px) - 12px);min-height:0;font-size:12px;z-index:8}
+body.cp #panel button{padding:4px 6px;font-size:11.5px}
+body.cp #wave{left:calc(6px + env(safe-area-inset-left,0px));top:calc(var(--th,44px) + 4px);bottom:auto;width:150px;padding:3px 7px;font-size:11px}
+body.cp #wvh{font-size:11.5px;margin:0;cursor:pointer}
+body.cp #wvh::after{content:' ▾';opacity:.7}
+body.cp #wvl{max-height:34dvh;font-size:11px;margin-top:4px}
+body.cp #skill{left:calc(6px + env(safe-area-inset-left,0px));bottom:calc(var(--bh,60px) + 6px)}
+body.cp #boul{width:72px;height:72px;font-size:9px}
+body.cp #boul .bi{font-size:22px}
+body.cp #cup{right:calc(6px + env(safe-area-inset-right,0px));bottom:calc(var(--bh,60px) + 6px);width:210px;padding:3px 7px;z-index:7}
+body.cp #cupb{max-height:calc(100dvh - var(--th,44px) - var(--bh,60px) - 60px);overflow:auto}
+body.cp #toast{top:calc(var(--th,44px) + 4px)}
+body.cp #hinttip{max-width:220px;font-size:12px}
+body.cp #menu h1{font-size:22px}
+body.cp .card{min-height:0;padding:8px;width:150px}
+body.cp .card>div{font-size:28px!important}
+body.pt #rw .card,body.pt #skpick .card{width:min(100%,340px)}
+body.cp #book{gap:6px}
+body.cp #bk{width:98vw;height:calc(100dvh - 64px);padding:6px}
+body.cp .pg{padding:8px 10px 4px}
+body.cp .ds{min-height:0;font-size:11.5px;line-height:1.3;margin:3px 0}
+body.cp .stt{font-size:11px}
+body.cp .tg{margin-bottom:2px;font-size:11px}
+body.cp .nm{margin-top:4px;font-size:15px}
+body.pt #bk{flex-direction:column}
+body.pt .pg{min-height:0}
+body.pt #bk::after,body.pt #leaf{display:none!important}
+body.pt #bkL{border-radius:8px 8px 0 0;box-shadow:inset 0 -22px 22px -16px rgba(70,35,0,.55)}
+body.pt #bkR{border-radius:0 0 8px 8px;box-shadow:inset 0 22px 22px -16px rgba(70,35,0,.55)}
 </style></head><body>
-<div id="top"><div class="b">❤ <b id="hp"></b></div><div class="b">🪙 <b id="gd"></b></div><div class="b" title="Crystals from the mine">💎 <b id="cr">0</b> <small id="crr"></small></div><div class="b">Wave <b id="wv"></b>/50 <span id="tm"></span></div><button id="sp0">⏸</button><button id="sp1" class="on">1x</button><button id="sp2">2x</button><button id="rc">⟲ Camera</button><button id="skb">⬢ Skills & Items</button><button id="bkb">📖 Bestiary</button><button id="snd" title="Sound on/off (M)">🔊</button></div>
+<div id="top"><div class="b">❤ <b id="hp"></b></div><div class="b">🪙 <b id="gd"></b></div><div class="b" title="Crystals from the mine">💎 <b id="cr">0</b> <small id="crr"></small></div><div class="b">Wave <b id="wv"></b>/50 <span id="tm"></span></div><button id="sp0">⏸</button><button id="sp1" class="on">1x</button><button id="sp2">2x</button><button id="rc">⟲<span class="lb"> Camera</span></button><button id="skb">⬢<span class="lb"> Skills & Items</span></button><button id="bkb">📖<span class="lb"> Bestiary</span></button><button id="snd" title="Sound on/off (M)">🔊</button></div>
 <div id="side" class="b"><b>⬢ Skill tree</b> <small id="hxc"></small><div id="hexbox"></div><b>🎒 Items</b> <small>(drag onto a tower)</small><div id="invbox"></div></div><div id="panel" class="b"></div><div id="hinttip" class="b"></div><div id="reward"><div id="rw"></div></div><div id="fl"></div><div id="dragg" class="it"></div><div id="tip" class="b"></div><div id="toast" class="b"></div>
 <div id="bot"><span id="builds" style="display:contents"></span><button id="rep">🔧 Repair gate +5 (150g)</button></div>
 <div id="menu" style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(20,14,8,.5);z-index:10;text-align:center"><div class="b" style="padding:24px 28px;width:min(360px,92vw);max-height:92vh;overflow:auto;display:flex;flex-direction:column;gap:10px;align-items:stretch"><h1 style="margin:0">🏰 Bone Valley <small>v1.0</small></h1><p style="margin:0 0 16px">Fling the skeleton horde off the road before they reach the castle. 50 waves.</p><button id="start" style="font-size:18px;padding:10px 28px">▶ Start Game</button> <button id="how">How to play</button> <button id="bes">📖 Bestiary</button><p id="howt" style="display:none;text-align:left;font-size:13px;margin-top:14px">Skeletons have no health: they die only when knocked off the road into the water. Pick a tower in the bottom bar, then click a build pad. Click a tower to upgrade, sell or change its target priority. Pick a basic skill at the start (bomb, wind, mine, harpoon or lightning) and cast it on the road with the skill button or B; every 100 kills made with it evolves it into a stronger form. Left-drag rotates the camera, right-drag pans, scroll zooms. Space pauses. On wave 1 and every 3 waves you pick a reward: hex upgrades fill your 6-slot skill tree, items go to your inventory - drag an item onto a tower (2 permanent slots each).</p><div id="best"></div><div id="maps"></div></div></div>
@@ -76,15 +126,16 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;background:rad
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script>
+const MOB=/Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent)||matchMedia('(pointer:coarse)').matches;
 const V=THREE.Vector3,G=22,ROAD=2.3,$=id=>document.getElementById(id),R=(a,b)=>a+Math.random()*(b-a);
 const scene=new THREE.Scene();
 {const c=document.createElement('canvas');c.width=2;c.height=256;const x=c.getContext('2d'),g=x.createLinearGradient(0,0,0,256);g.addColorStop(0,'#6fa8dc');g.addColorStop(.6,'#f3d9a4');g.addColorStop(1,'#f7c98b');x.fillStyle=g;x.fillRect(0,0,2,256);scene.background=new THREE.CanvasTexture(c)}
 scene.fog=new THREE.Fog(0xf0d4a0,80,200);
-const rd=new THREE.WebGLRenderer({antialias:true});rd.setSize(innerWidth,innerHeight);rd.setPixelRatio(Math.min(devicePixelRatio,2));rd.shadowMap.enabled=true;rd.shadowMap.type=THREE.PCFSoftShadowMap;rd.toneMapping=THREE.ACESFilmicToneMapping;rd.toneMappingExposure=1.25;document.body.appendChild(rd.domElement);
+const rd=new THREE.WebGLRenderer({antialias:true});rd.setSize(innerWidth,innerHeight);rd.setPixelRatio(Math.min(devicePixelRatio,MOB?1.5:2));rd.shadowMap.enabled=true;rd.shadowMap.type=THREE.PCFSoftShadowMap;rd.toneMapping=THREE.ACESFilmicToneMapping;rd.toneMappingExposure=1.25;document.body.appendChild(rd.domElement);
 const cam=new THREE.PerspectiveCamera(42,innerWidth/innerHeight,.5,400),C0=new V(0,50,46),T0=new V(0,0,-2);cam.position.copy(C0);
 const oc=new THREE.OrbitControls(cam,rd.domElement);oc.target.copy(T0);oc.enableDamping=true;oc.maxPolarAngle=1.45;oc.minDistance=18;oc.maxDistance=120;oc.update();
 scene.add(new THREE.HemisphereLight(0xbfd8ff,0x7a6a4a,.75));
-const sun=new THREE.DirectionalLight(0xfff0d0,1.05);sun.position.set(30,55,20);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-50,right:50,top:50,bottom:-50,near:1,far:160});sun.shadow.bias=-.0006;scene.add(sun);{const rim=new THREE.DirectionalLight(0x8fb8ff,.45);rim.position.set(-30,25,-30);scene.add(rim)}
+const sun=new THREE.DirectionalLight(0xfff0d0,1.05);sun.position.set(30,55,20);sun.castShadow=true;sun.shadow.mapSize.set(MOB?1024:2048,MOB?1024:2048);Object.assign(sun.shadow.camera,{left:-50,right:50,top:50,bottom:-50,near:1,far:160});sun.shadow.bias=-.0006;scene.add(sun);{const rim=new THREE.DirectionalLight(0x8fb8ff,.45);rim.position.set(-30,25,-30);scene.add(rim)}
 const sh=o=>{o.castShadow=o.receiveShadow=true;return o};
 const mat=(c,e)=>new THREE.MeshStandardMaterial({color:c,flatShading:true,emissive:e||0,roughness:.78,metalness:.08});
 const bxg=(w,h,d)=>new THREE.BoxGeometry(w,h,d);
@@ -769,14 +820,14 @@ $('cuph').onclick=()=>{const b=$('cupb'),o=b.style.display=='none';b.style.displ
 const ring=new THREE.Mesh(new THREE.CylinderGeometry(1,1,.5,48),new THREE.MeshBasicMaterial({color:0x66ccff,transparent:true,opacity:.2,depthWrite:false}));ring.visible=false;scene.add(ring);
 let toastT=0;const toast=s=>{const t=$('toast');t.textContent=s;t.style.display='block';clearTimeout(toastT);toastT=setTimeout(()=>t.style.display='none',1800)};
 const tip=$('tip');
-for(const k in DEF){const d=DEF[k],b=document.createElement('button');b.dataset.t=k;b.innerHTML=`<span style="font-size:24px">${d.i}</span><br><b>${d.n.replace(' Tower','')}</b><br><small>🪙 ${d.c}</small>`;b.onclick=()=>{place=place==k?null:k;sel=null;spell=null;ui(1)};
+for(const k in DEF){const d=DEF[k],b=document.createElement('button');b.dataset.t=k;b.innerHTML=`<span style="font-size:24px">${d.i}</span><br><b>${d.n.replace(' Tower','')}</b><br><small>🪙 ${d.c}</small>`;b.onclick=()=>{place=place==k?null:k;sel=null;spell=null;tip.style.display='none';ui(1)};
 b.onmouseenter=()=>{tip.innerHTML=`<b>${d.i} ${d.n}</b> — ${d.c}g<br>${d.d}<br>Upgrades: T2 ${Math.round(d.c*.8)}g · T3 ${Math.round(d.c*1.4)}g · T4 ${Math.round(d.c*2.2)}g (${d.b[0].n} / ${d.b[1].n})<br>Range ${d.rg[0]}–${d.rg[2]}`;tip.style.display='block'};b.onmouseleave=()=>tip.style.display='none';$('builds').appendChild(b)}
 const ray=new THREE.Raycaster(),mp=new THREE.Vector2();
 function setM(ev){mp.set(ev.clientX/innerWidth*2-1,-ev.clientY/innerHeight*2+1);ray.setFromCamera(mp,cam)}
 function hit(ev){setM(ev);const pt=ray.intersectObjects([...padM,...towers.map(t=>t.g)],true)[0];if(!pt)return{};let o=pt.object;while(o&&!o.userData.tw&&!o.userData.pad)o=o.parent;return o?{tw:o.userData.tw,pad:o.userData.pad}:{}}
-let dn=null;rd.domElement.addEventListener('pointerdown',e=>dn=[e.clientX,e.clientY]);
+let dn=null;rd.domElement.addEventListener('pointerdown',e=>{dn=e.isPrimary?[e.clientX,e.clientY]:null;if(spell&&e.pointerType!='mouse'){setM(e);const q=new V();if(ray.ray.intersectPlane(new THREE.Plane(new V(0,1,0),0),q))G0.aim=q}});
 rd.domElement.addEventListener('pointermove',e=>{if(!e.buttons){hv=hit(e);G0.aim=null;if(spell){const q=new V();if(ray.ray.intersectPlane(new THREE.Plane(new V(0,1,0),0),q))G0.aim=q}const tq=hv.tw||(hv.pad&&hv.pad.tower);if(tq)showHint(towerHint(tq),e);else hideHint()}});rd.domElement.addEventListener('pointerleave',()=>hideHint());
-rd.domElement.addEventListener('pointerup',e=>{if(!dn||Math.hypot(e.clientX-dn[0],e.clientY-dn[1])>6)return;
+rd.domElement.addEventListener('pointerup',e=>{if(!e.isPrimary||!dn||Math.hypot(e.clientX-dn[0],e.clientY-dn[1])>(MOB?12:6))return;
 if(spell=='boulder'){setM(e);const p=new V();let ok=1;if(ray.ray.intersectPlane(new THREE.Plane(new V(0,1,0),0),p))ok=castSkill(p)!==false;if(ok)spell=null;ui(1);return}
 const h=hit(e);if(equip!=null){const tq=h.tw||(h.pad&&h.pad.tower);if(tq){equipItem(tq,equip);sel=tq}equip=null;renderSide();ui(1);return}if(h.tw){sel=h.tw;place=null}else if(h.pad){if(h.pad.tower){sel=h.pad.tower;place=null}else if(place){const c=DEF[place].c;if(G0.gold>=c){G0.gold-=c;sel=addTower(place,h.pad);place=null}else toast('Not enough gold')}else{sel=null;toast('Pick a tower from the build bar first')}}else sel=null;ui(1)});
 addEventListener('keydown',e=>{if(e.key=='Escape'){place=spell=sel=equip=null;renderSide();ui(1)}if(e.key==' '&&!G0.menu&&!G0.ps&&!BK.on){G0.speed=G0.speed?0:1;ui(1);e.preventDefault()}});
@@ -787,9 +838,9 @@ window.upg=b=>{const t=sel;if(!t||t.tier>=4)return;if(t.tier==3&&b==null)return;
 window.sell=()=>{const t=sel;if(!t)return;bclean(t);G0.gold+=Math.floor(t.inv*.75);t.dead=1;scene.remove(t.g);towers.splice(towers.indexOf(t),1);t.pad.tower=null;sel=null;ui(1)};
 window.prio=p=>{sel.prio=p;ui(1)};
 window.slotClick=()=>{if(equip!=null&&sel)equipItem(sel,equip)};
-$('skb').onclick=()=>{const q=$('side');q.style.display=q.style.display=='none'?'block':'none'};
+$('skb').onclick=()=>{const q=$('side');q.style.display=getComputedStyle(q).display=='none'?'block':'none'};
 const hint=$('hinttip');
-function showHint(h,ev){hint.innerHTML=h;hint.style.display='block';hint.style.left=Math.max(4,Math.min(innerWidth-270,ev.clientX+14))+'px';hint.style.top=Math.max(4,Math.min(innerHeight-200,ev.clientY+14))+'px'}
+let hintT=0;function showHint(h,ev){clearTimeout(hintT);if(matchMedia('(hover:none)').matches)hintT=setTimeout(()=>{hint.style.display='none'},2600);hint.innerHTML=h;hint.style.display='block';hint.style.left=Math.max(4,Math.min(innerWidth-270,ev.clientX+14))+'px';hint.style.top=Math.max(4,Math.min(innerHeight-200,ev.clientY+14))+'px'}
 const hideHint=()=>{hint.style.display='none'};
 const itemHint=k=>{const d=ITEMS[k];return `<b style="color:${RAR[d.r].col}">${d.i} ${d.n}</b> <small>${RAR[d.r].n}</small><br>${d.d}`};
 const hexHint=k=>{const d=HEX[k];return `<b style="color:${RAR[d.r].col}">${d.i} ${d.n}</b> <small>${RAR[d.r].n} hex</small><br>${d.d}`};
@@ -802,10 +853,11 @@ pos.forEach((p,i)=>{const k=hexes[i],d=k&&HEX[k];h+=`<div class="hx" data-h="${i
 $('invbox').innerHTML=inv.length?inv.map((k,i)=>`<div class="it${equip==i?' sel':''}" data-i="${i}" style="border-color:${RAR[ITEMS[k].r].col}">${ITEMS[k].i}</div>`).join(''):'<small style="grid-column:1/5;opacity:.7">Empty - items come from rewards.</small>'}
 $('side').addEventListener('pointermove',e=>{if(drag)return;const h=e.target.closest('.hx'),it=e.target.closest('.it');if(h){const k=hexes[+h.dataset.h];showHint(k?hexHint(k):'<b>Empty hex module</b><br>Choose a hex upgrade from a reward to lock it here.',e)}else if(it&&inv[+it.dataset.i])showHint(itemHint(inv[+it.dataset.i]),e);else hideHint()});
 $('side').addEventListener('pointerleave',hideHint);
+$('side').addEventListener('pointerdown',e=>{if(e.pointerType!='touch')return;const h=e.target.closest('.hx');if(h){const k=hexes[+h.dataset.h];showHint(k?hexHint(k):'<b>Empty hex module</b><br>Choose a hex upgrade from a reward to lock it here.',e)}});
 let drag=null;
-$('invbox').addEventListener('pointerdown',e=>{const it=e.target.closest('.it');if(!it)return;e.preventDefault();dn=null;drag={i:+it.dataset.i,x:e.clientX,y:e.clientY,mv:0};hideHint()});
-addEventListener('pointermove',e=>{if(!drag)return;if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)>6)drag.mv=1;if(!drag.mv)return;const g=$('dragg'),k=inv[drag.i];if(!k)return;g.style.display='flex';g.style.left=e.clientX-23+'px';g.style.top=e.clientY-23+'px';g.innerHTML=ITEMS[k].i;g.style.borderColor=RAR[ITEMS[k].r].col;if(e.target==rd.domElement){hv=hit(e);const tq=hv.tw||(hv.pad&&hv.pad.tower);if(tq)showHint(towerHint(tq),e);else hideHint()}});
-addEventListener('pointerup',e=>{if(!drag)return;const d=drag;drag=null;$('dragg').style.display='none';if(!d.mv){equip=equip==d.i?null:d.i;renderSide();ui(1);return}if(e.target==rd.domElement){const h=hit(e),tq=h.tw||(h.pad&&h.pad.tower);if(tq)equipItem(tq,d.i);else toast('Drop the item onto a tower')}hideHint()});
+$('invbox').addEventListener('pointerdown',e=>{const it=e.target.closest('.it');if(!it)return;e.preventDefault();dn=null;drag={i:+it.dataset.i,x:e.clientX,y:e.clientY,mv:0};if(e.pointerType=='touch')showHint(itemHint(inv[drag.i]),e);else hideHint()});
+addEventListener('pointermove',e=>{if(!drag)return;if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)>6)drag.mv=1;if(!drag.mv)return;const g=$('dragg'),k=inv[drag.i];if(!k)return;g.style.display='flex';g.style.left=e.clientX-23+'px';g.style.top=e.clientY-23+'px';g.innerHTML=ITEMS[k].i;g.style.borderColor=RAR[ITEMS[k].r].col;if(document.elementFromPoint(e.clientX,e.clientY)==rd.domElement){hv=hit(e);const tq=hv.tw||(hv.pad&&hv.pad.tower);if(tq)showHint(towerHint(tq),e);else hideHint()}});
+addEventListener('pointerup',e=>{if(!drag)return;const d=drag;drag=null;$('dragg').style.display='none';if(!d.mv){equip=equip==d.i?null:d.i;renderSide();ui(1);return}if(document.elementFromPoint(e.clientX,e.clientY)==rd.domElement){const h=hit(e),tq=h.tw||(h.pad&&h.pad.tower);if(tq)equipItem(tq,d.i);else toast('Drop the item onto a tower')}hideHint()});
 // rewards
 function rollRar(src){const av={};src.forEach(x=>av[x.r]=1);let sum=0;for(const k in av)sum+=RAR[k].w;let r=Math.random()*sum;for(const k in av){r-=RAR[k].w;if(r<=0)return k}return Object.keys(av)[0]}
 function offer(){const hexAv=Object.keys(HEX).filter(k=>!hexes.includes(k)&&(k!='cluster'||(G0.sk.id=='bomb'&&G0.sk.st==0))),cats=[0,1,2].map(()=>hexes.length<6&&hexAv.length&&Math.random()<.7/1.7?'hex':'item'),out=[],used=new Set();
@@ -855,7 +907,7 @@ addEventListener('resize',()=>{if(BK.on&&BK.vw)BK.vw.forEach(bkSize)});
 let pendMap=null;$('maps').onclick=e=>{const c=e.target.closest('.map');if(c){pendMap=MAPS[+c.dataset.m];skPickShow()}};
 function skPickShow(){$('skcards').innerHTML=Object.keys(SK).map(k=>{const s=SK[k];return `<div class="card" data-k="${k}"><div style="font-size:38px">${s.i}</div><b>${s.n}</b><span style="font-size:12.5px">${s.st[0].d}</span><small style="opacity:.85;font-size:11.5px">${s.st.map(x=>x.i+' '+x.n).join(' &rarr; ')}</small></div>`}).join('');$('skpick').style.display='flex'}
 $('skcards').onclick=e=>{const c=e.target.closest('.card');if(!c)return;G0.sk={id:c.dataset.k,kills:0,st:0};G0.cd=0;G0.cdMax=SK[c.dataset.k].cd[0];$('skpick').style.display='none';startMap(pendMap)};
-function startMap(M){buildMap(M);swamps.length=0;G0.hp=G0.max=M.hp;G0.gold=M.gold;G0.mult=M.mult;T0.set(M.tg[0],0,M.tg[1]);C0.set(M.cm[0],M.cm[1],M.cm[2]);cam.position.copy(C0);oc.target.copy(T0);$('menu').style.display='none';G0.menu=0;G0.speed=1;oc.autoRotate=false;$('cup').style.display=$('wave').style.display=$('skill').style.display='block';renderSide();ui(1)}
+function startMap(M){buildMap(M);swamps.length=0;G0.hp=G0.max=M.hp;G0.gold=M.gold;G0.mult=M.mult;T0.set(M.tg[0],0,M.tg[1]);camK=1;camFit();cam.position.copy(C0);oc.target.copy(T0);$('menu').style.display='none';G0.menu=0;G0.speed=1;oc.autoRotate=false;$('cup').style.display=$('wave').style.display=$('skill').style.display='block';layout();collapseCp();renderSide();ui(1)}
 let sig='';
 function ui(force){cupUI();waveUI();$('hp').textContent=G0.hp+'/'+G0.max;$('gd').textContent=Math.floor(G0.gold);$('wv').textContent=G0.wave;$('tm').textContent=G0.wave<50?`· next in ${Math.max(0,Math.ceil(G0.timer))}s`:'· final wave';
 $('rep').disabled=G0.gold<150||G0.hp>=G0.max;{const ss=G0.sk,sd=SK[ss.id].st[ss.st],mx=G0.cdMax||10,b=$('boul'),h=`<span class="bi">${sd.i}</span><span>${sd.n}</span><small>${ss.st<3?ss.kills+'/100':'MAX'}</small>`+(G0.cd>0?`<span class="cdn">${Math.ceil(G0.cd)}</span>`:'');if(b._h!=h){b._h=h;b.innerHTML=h;b.title=sd.n+' [B] - '+sd.d+(ss.st<3?' (evolves after 100 kills)':'')}b.style.background=G0.cd>0?`conic-gradient(#2b2013 ${Math.min(360,G0.cd/mx*360)}deg,#5a4527 0)`:''}$('boul').disabled=G0.cd>0;
@@ -865,7 +917,7 @@ rd.domElement.style.cursor=spell?'crosshair':'default';
 const s=sel?[sel.type,sel.tier,sel.prio,G0.gold>=upc(sel),sel.items.join('|'),G0.rgm,Math.round((1-(sel.tilt||0))*20),hexes.length].join():'';if(!force&&s==sig)return;sig=s;const p=$('panel');
 if(!sel){p.style.display='none';return}const t=sel,d=DEF[t.type],c=upc(t);p.style.display='block';
 p.innerHTML=`<b>${d.i} ${d.n}</b> · Tier ${t.tier}/4${t.tier==4?'<br><b style="color:#e8a93c">'+d.b[t.br].i+' '+d.b[t.br].n+'</b>':''}${statsHtml(t)}${slotsHtml(t)}${t.tier<3?`<button onclick="upg()" ${G0.gold<c?'disabled':''}>Upgrade ${c}g<br><small>${d.up[t.tier-1]}</small></button>`:t.tier==3?d.b.map((o,i)=>`<button onclick="upg(${i})" ${G0.gold<c?'disabled':''}>${o.i} ${o.n} · ${c}g<br><small>${o.d}</small></button>`).join(''):'<br><small>Max tier</small>'}<button onclick="sell()">Sell +${Math.floor(t.inv*.75)}g${t.items.some(Boolean)?' <small>(items lost)</small>':''}</button><div class="row">${[['first','First'],['strong','Heaviest'],['close','Closest']].map(([k,n])=>`<button class="${t.prio==k?'on':''}" onclick="prio('${k}')">${n}</button>`).join('')}</div>`}
-addEventListener('resize',()=>{cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();rd.setSize(innerWidth,innerHeight)});
+addEventListener('resize',()=>onResize());addEventListener('orientationchange',()=>setTimeout(()=>onResize(),250));
 const clock=new THREE.Clock();let uiT=0;
 function loop(){requestAnimationFrame(loop);const rdt=Math.min(.05,clock.getDelta()),n=G0.speed;for(let s=0;s<n;s++)step(Math.min(rdt,.033));
 for(let i=nums.length-1;i>=0;i--){const q=nums[i];q.t+=rdt;q.p.y+=rdt*1.5;const v=q.p.clone().project(cam);q.d.style.transform=`translate(${(v.x*.5+.5)*innerWidth}px,${(-v.y*.5+.5)*innerHeight}px) translate(-50%,-50%)`;q.d.style.opacity=v.z>1?0:1-q.t/.9;if(q.t>.9){q.d.remove();nums.splice(i,1)}}
@@ -951,5 +1003,21 @@ document.addEventListener('click',e=>{const b=e.target.closest('button');if(b&&!
 const sndUI=()=>{$('snd').textContent=AU.on?'🔊':'🔇'};
 function toggleSnd(){AU.on=!AU.on;try{localStorage.setItem('bvMute',AU.on?'0':'1')}catch(e){}sndUI();if(AU.on)sfx('click')}
 $('snd').onclick=toggleSnd;addEventListener('keydown',e=>{if(e.key=='m'||e.key=='M')toggleSnd()});sndUI();
+// ---- responsive layout (mobile + desktop)
+let camK=1;
+function camFit(){const a=innerWidth/innerHeight,k=Math.min(2.6,Math.max(1,1.12/a));
+ if(Math.abs(k-camK)>1e-3){cam.position.sub(oc.target).multiplyScalar(k/camK).add(oc.target);camK=k}
+ if(curMap){const m=curMap.cm;C0.set(T0.x+(m[0]-T0.x)*k,m[1]*k,T0.z+(m[2]-T0.z)*k)}
+ oc.maxDistance=120*k;cam.far=400*k;scene.fog.near=80*k;scene.fog.far=200*k;cam.updateProjectionMatrix()}
+function layout(){const b=document.body,w=innerWidth,h=innerHeight,cp=w<900||h<560;b.classList.toggle('cp',cp);b.classList.toggle('pt',cp&&h>w);b.classList.toggle('ls',cp&&h<=w);
+ const r=document.documentElement.style;r.setProperty('--th',$('top').offsetHeight+'px');r.setProperty('--bh',$('bot').offsetHeight+'px');
+ if(BK.on&&BK.vw)BK.vw.forEach(bkSize)}
+function onResize(){cam.aspect=innerWidth/innerHeight;rd.setSize(innerWidth,innerHeight);layout();camFit()}
+function collapseCp(){const cp=document.body.classList.contains('cp');$('cupb').style.display=cp?'none':'block';$('cuc').textContent=cp?'▸':'▾';$('wvl').style.display=cp?'none':'block'}
+$('wvh').onclick=()=>{const l=$('wvl');l.style.display=l.style.display=='none'?'block':'none'};
+document.addEventListener('gesturestart',e=>e.preventDefault());
+addEventListener('contextmenu',e=>{if(e.target==rd.domElement)e.preventDefault()});
+if(window.ResizeObserver){const ro=new ResizeObserver(()=>layout());ro.observe($('top'));ro.observe($('bot'))}
+layout();camFit();cam.position.copy(C0);oc.update();
 renderSide();ui(1);loop();
 </script></body></html>
