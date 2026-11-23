@@ -2,7 +2,7 @@
 <html lang="en">
  <head>
   <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" name="viewport"/>
   <title>
    Bone Valley &ndash; 3D Physics Tower Defense
   </title>
@@ -552,6 +552,60 @@ body::after {
   font-weight:800;
   background:rgba(0,0,0,.45)
 }
+
+/* ===== Mobile / touch layer ===== */
+html,body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+canvas{touch-action:none}
+button{touch-action:manipulation}
+#reward,#skpick{overflow:auto}
+#reward{align-items:flex-start}
+#skpick{align-items:flex-start}
+#rw,#skpick>div{margin:auto}
+@media (hover:none){#tip,#hinttip{display:none!important}}
+@media (max-width:900px),(pointer:coarse){
+  #top{gap:4px;padding:calc(4px + env(safe-area-inset-top,0px)) calc(4px + env(safe-area-inset-right,0px)) 4px calc(4px + env(safe-area-inset-left,0px))}
+  #top .b{padding:3px 7px;font-size:12px}
+  #top button{padding:5px 8px;font-size:12px}
+  #crr{display:none}
+  #toast{top:calc(var(--th,90px) + 6px);max-width:92vw;text-align:center}
+  #side{top:calc(var(--th,90px) + 6px);left:4px;width:200px;max-height:calc(100dvh - var(--th,90px) - var(--bh,80px) - 20px);min-height:0;z-index:8}
+  #bot{left:0;right:0;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;gap:5px;padding:5px calc(5px + env(safe-area-inset-right,0px)) calc(5px + env(safe-area-inset-bottom,0px)) calc(5px + env(safe-area-inset-left,0px));background:rgba(30,24,16,.8);border-top:1px solid #6b5636;-webkit-overflow-scrolling:touch;z-index:6}
+  #builds button,#bot>button{flex:0 0 auto;min-width:64px;padding:3px 6px;font-size:11px;line-height:1.15}
+  #builds button span{font-size:20px!important}
+  #rep{font-size:11px;max-width:92px}
+  #panel{top:auto;bottom:calc(var(--bh,80px) + 6px);right:calc(4px + env(safe-area-inset-right,0px));width:215px;max-height:calc(100dvh - var(--th,90px) - var(--bh,80px) - 20px);min-height:0;z-index:7}
+  #panel button{padding:8px 4px}
+  #panel .row button{padding:8px 2px}
+  #cup{bottom:calc(var(--bh,80px) + 6px);right:calc(4px + env(safe-area-inset-right,0px));width:215px;z-index:4}
+  #cupb{max-height:42dvh;overflow:auto}
+  #skill{left:calc(6px + env(safe-area-inset-left,0px));bottom:calc(var(--bh,80px) + 6px)}
+  #boul{width:78px;height:78px;font-size:9.5px}
+  #boul .bi{font-size:24px}
+  #wave{left:calc(4px + env(safe-area-inset-left,0px));bottom:calc(var(--bh,80px) + 92px);width:172px;padding:4px 7px}
+  #wvh{cursor:pointer;margin:0;font-size:12px}
+  #wvl{max-height:26dvh;font-size:11.5px;margin-top:3px}
+  .card{width:150px;min-height:0;padding:8px}
+  #rw .b,#skpick .b{padding:12px 10px!important}
+  #reward h2,#skpick h2{font-size:17px}
+  #dragg{width:52px;height:52px}
+  .it{font-size:22px}
+}
+@media (max-width:700px) and (orientation:portrait){
+  #bk{flex-direction:column;height:78dvh}
+  #bk::after,#leaf{display:none!important}
+  #bkL{border-radius:8px 8px 0 0;box-shadow:inset 0 -20px 20px -16px rgba(70,35,0,.55)}
+  #bkR{border-radius:0 0 8px 8px;box-shadow:inset 0 20px 20px -16px rgba(70,35,0,.55)}
+  .pg{padding:6px 10px 4px}
+  .ds{min-height:0;margin:3px 0}
+}
+@media (max-height:500px){
+  #bk{height:82dvh}
+  .ds{min-height:0;margin:2px 0;font-size:11px}
+  .stt{font-size:10.5px}
+  .nm{margin:2px 0 0;font-size:14px}
+  .tg{margin-bottom:1px}
+  #menu>.b{padding:12px 16px!important}
+}
   </style>
  </head>
  <body>
@@ -771,7 +825,7 @@ const rd=new THREE.WebGLRenderer( {
   antialias:true
 });
 rd.setSize(innerWidth,innerHeight);
-rd.setPixelRatio(Math.min(devicePixelRatio,2));
+rd.setPixelRatio(Math.min(devicePixelRatio,matchMedia("(pointer:coarse)").matches?1.5:2));
 rd.shadowMap.enabled=true;
 rd.shadowMap.type=THREE.PCFSoftShadowMap;
 rd.toneMapping=THREE.ACESFilmicToneMapping;
@@ -792,7 +846,7 @@ scene.add(new THREE.HemisphereLight(0xbfd8ff,0x7a6a4a,.75));
 const sun=new THREE.DirectionalLight(0xfff0d0,1.05);
 sun.position.set(30,55,20);
 sun.castShadow=true;
-sun.shadow.mapSize.set(2048,2048);
+sun.shadow.mapSize.set(...(matchMedia("(pointer:coarse)").matches?[1024,1024]:[2048,2048]));
 Object.assign(sun.shadow.camera, {
   left:-50,right:50,top:50,bottom:-50,near:1,far:160
 });
@@ -6332,7 +6386,7 @@ rd.domElement.addEventListener('pointermove',e=> {
 });
 rd.domElement.addEventListener('pointerleave',()=>hideHint());
 rd.domElement.addEventListener('pointerup',e=> {
-  if(!dn||Math.hypot(e.clientX-dn[0],e.clientY-dn[1])>6)return;
+  if(!dn||Math.hypot(e.clientX-dn[0],e.clientY-dn[1])>(e.pointerType=='touch'?14:6))return;
   if(spell=='boulder') {
     setM(e);const p=new V();let ok=1;if(ray.ray.intersectPlane(new THREE.Plane(new V(0,1,0),0),p))ok=castSkill(p)!==false;if(ok)spell=null;ui(1);return
   }
@@ -6510,7 +6564,7 @@ $('invbox').addEventListener('pointerdown',e=> {
   };hideHint()
 });
 addEventListener('pointermove',e=> {
-  if(!drag)return;if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)>6)drag.mv=1;if(!drag.mv)return;const g=$('dragg'),k=inv[drag.i];if(!k)return;g.style.display='flex';g.style.left=e.clientX-23+'px';g.style.top=e.clientY-23+'px';g.innerHTML=ITEMS[k].i;g.style.borderColor=RAR[ITEMS[k].r].col;if(e.target==rd.domElement) {
+  if(!drag)return;if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)>6)drag.mv=1;if(!drag.mv)return;const g=$('dragg'),k=inv[drag.i];if(!k)return;g.style.display='flex';g.style.left=e.clientX-23+'px';g.style.top=e.clientY-23+'px';g.innerHTML=ITEMS[k].i;g.style.borderColor=RAR[ITEMS[k].r].col;if(document.elementFromPoint(e.clientX,e.clientY)==rd.domElement) {
     hv=hit(e);const tq=hv.tw||(hv.pad&&hv.pad.tower);if(tq)showHint(towerHint(tq),e);else hideHint()
   }
 });
@@ -6518,7 +6572,7 @@ addEventListener('pointerup',e=> {
   if(!drag)return;const d=drag;drag=null;$('dragg').style.display='none';if(!d.mv) {
     equip=equip==d.i?null:d.i;renderSide();ui(1);return
   }
-  if(e.target==rd.domElement) {
+  if(document.elementFromPoint(e.clientX,e.clientY)==rd.domElement) {
     const h=hit(e),tq=h.tw||(h.pad&&h.pad.tower);if(tq)equipItem(tq,d.i);else toast('Drop the item onto a tower')
   }
   hideHint()
@@ -7488,5 +7542,74 @@ renderSide();
 ui(1);
 loop();
   </script>
- </body>
+ 
+<script>
+// ---- mobile / touch support layer
+(()=>{
+  const MOB=matchMedia('(max-width:900px), (pointer:coarse)').matches,
+  root=document.documentElement,
+  cv=rd.domElement;
+  const metrics=()=>{
+    root.style.setProperty('--th',$('top').offsetHeight+'px');
+    root.style.setProperty('--bh',$('bot').offsetHeight+'px')
+  };
+  // frame the map for portrait screens by pulling the camera back
+  function applyCam(){
+    const a=innerWidth/innerHeight,f=Math.min(2.2,Math.max(1,1.2/a));
+    cam.position.copy(T0).addScaledVector(C0.clone().sub(T0),f);
+    oc.target.copy(T0)
+  }
+  oc.maxDistance=220;
+  if(MOB)oc.minDistance=14;
+  $('rc').onclick=applyCam;
+  // bigger invisible tap targets on build pads
+  function fatPads(){
+    for(const m of padM){
+      const h=new THREE.Mesh(new THREE.CylinderGeometry(3.1,3.1,1,12),new THREE.MeshBasicMaterial({visible:false}));
+      h.position.y=2.8;
+      m.add(h)
+    }
+  }
+  const sm=startMap;
+  startMap=function(M){
+    sm(M);
+    applyCam();
+    if(MOB)fatPads();
+    metrics();
+    setTimeout(metrics,60)
+  };
+  // ignore multi-finger gestures (pinch/pan) as taps
+  const ptr=new Set();
+  cv.addEventListener('pointerdown',e=>{ptr.add(e.pointerId);if(ptr.size>1)dn=null});
+  ['pointerup','pointercancel','pointerleave'].forEach(ev=>cv.addEventListener(ev,e=>ptr.delete(e.pointerId)));
+  // iOS/Android need a user gesture to start audio
+  ['touchend','click'].forEach(ev=>addEventListener(ev,()=>{
+    auInit();
+    if(AU.ctx&&AU.ctx.state!='running')AU.ctx.resume()
+  },{passive:true}));
+  let lp=innerWidth<innerHeight;
+  addEventListener('resize',()=>{
+    metrics();
+    const p=innerWidth<innerHeight;
+    if(p!=lp){lp=p;applyCam()}
+  });
+  addEventListener('orientationchange',()=>setTimeout(metrics,300));
+  if(MOB){
+    // compact defaults: side panel, castle upgrades and wave list start collapsed
+    $('side').style.display='none';
+    $('cupb').style.display='none';
+    $('cuc').textContent='\u25B8';
+    $('wvl').style.display='none';
+    $('wvh').onclick=()=>{const l=$('wvl');l.style.display=l.style.display=='none'?'block':'none'};
+    // after picking an inventory item, close the panel so the tower can be tapped
+    $('invbox').addEventListener('click',()=>setTimeout(()=>{if(equip!=null){$('side').style.display='none';toast('Now tap a tower to equip')}},0));
+    // keep the castle upgrades out of the tower panel's way
+    setInterval(()=>{$('cup').style.visibility=sel?'hidden':'visible'},150)
+  }
+  applyCam();
+  metrics();
+  setInterval(metrics,1000)
+})();
+</script>
+</body>
 </html>
