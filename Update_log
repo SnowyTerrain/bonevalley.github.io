@@ -1,0 +1,309 @@
+v0.93
+New Content
+New Tower – Wizard Tower: Fires homing arcane bolts with high range and medium-fast travel speed, prioritizing enemies that hook towers as a direct counter to hooking units.
+
+Level 1: Fires a single homing arcane bolt at medium range.
+
+Level 2: Increases attack rate and range.
+
+Level 3: Fires 2 homing projectiles.
+
+Level 4A: Grants global range.
+
+Level 4B: Increases to 3 projectiles with faster projectile speed.
+
+Skill Evolution System: Choose a basic skill at the start of a run; every 100 kills earned using that skill evolves it through 4 tiers:
+
+Drop Bomb: Drop Bomb → Cluster Bomb → Heavy Bomb → Mini Nuke.
+
+Wind Blow: Wind Blow → Freezing Wind Blow → Small Tornado → Big Tornado.
+
+Place Mine: Place Mine → Place 3 Mines → Place 3 Incendiary Mines → Place 1 Megamine.
+
+Harpoon Throw: Harpoon Throw → Arrow Barrage → Big Ballista Bolt → Big Exploding Ballista Bolt.
+
+Lightning Bolt from Sky: Lightning Bolt → Bigger Lightning Bolt → Small Storm (3s duration) → Big Storm (3s duration).
+
+v0.92
+New Content & UI
+Added sound effects.
+
+Added a dedicated HUD position for the bomb skill button.
+
+Added wave information displaying the current wave's enemy count and enemy types.
+
+v0.91
+New Content & Systems
+3D Bestiary Book: Reworked the bestiary into an interactive two-page book that flips left and right, displaying 3D enemy models.
+
+Crystal Mine & Worker Loop: Added a crystal mine near the castle with 1 worker that generates 1 Crystal every 5s, hauling between the crystal mine and storage.
+
+Castle Upgrades (Bottom-Right HUD):
+
+More Workers: Costs 25 Crystals (doubles per rank) and generates +1 Crystal every 5s.
+
+Better Gear: Grants +3% tower attack speed per rank (starts at 25 Crystals, doubles per rank).
+
+Enchanted Vision: Grants +5% tower attack range per rank (starts at 25 Crystals, doubles per rank).
+
+Sturdy Towers: Grants +5% tower hook resistance per rank (starts at 25 Crystals, doubles per rank).
+
+Archers Rise: Adds +1 archer on top of the castle per rank (starts at 25 Crystals, doubles per rank).
+
+Catapult Line: Adds +1 catapult on top of the castle per rank (starts at 100 Crystals, doubles per rank).
+
+v0.90
+New Content
+New Enemies:
+
+Skeleton Horde: Immediately spawns 20 small skeletons.
+
+Legionnaire Skeleton: Carries a shield that blocks 1 damage.
+
+Hook Skeleton Cannon: Fires hooks at towers from a longer range.
+
+Climber Skeleton: Attempts to climb to the top of the nearest tower, then explodes and destroys it.
+
+New Tower – Net Thrower:
+
+Level 1: Throws a small net that immobilizes enemies.
+
+Level 2: Throws a small net that immobilizes enemies and explodes 1 second later.
+
+Level 3: Throws two small nets that immobilize enemies and explode 1 second later.
+
+Level 4A: Throws a large net that pushes enemies back.
+
+Level 4B: Throws four small nets that immobilize enemies and explode 1 second later.
+
+New Hex Upgrades:
+
+Rare – Castle Catapult: Adds a small catapult on top of the castle with global range.
+
+Rare – Sandstorm: Slows all enemies for 2s every 30s.
+
+New Items:
+
+Legendary – Tesla Coil: Periodically fires a lightning bolt from the tower that pushes enemies.
+
+Common – Rage: Every 10s, grants the tower +30% push power for 3s.
+
+Balance & Map Changes
+Reduced Fan push strength by 50%.
+
+Moved the first tower placement location on maps further away from enemy spawns.
+
+Increased the time required for a tower to be destroyed by hooking by 100%.
+
+v0.89
+Fixes & Improvements
+Reworked enemy collisions and weight physics.
+
+Fixed upright orientation issues for enemies such as Pogo Skeleton.
+
+Reduced Hook Skeleton range.
+
+Removals
+Removed Undead Flying Ship and Cyclops Shield Bearer Giant.
+
+v0.88
+New Content
+New Enemies:
+
+Cyclops Shield Bearer Giant: Advances with a giant shield that blocks projectiles from the front.
+
+Mad Scientist Skeleton: Zaps nearby skeletons to increase their movement speed.
+
+Undead Flying Ship: Carries 6 undead harpoon throwers on board and is destroyed after 10 hits.
+
+v0.87
+New Content & Visuals
+Elite Enemy Variants (Wave 6+): Standard enemies have a 3% chance to spawn as glowing Elites with +30% weight, +50% size, a glowing gold crown, and a guaranteed bonus coin drop.
+
+Graphics & Item Visuals: Improved overall graphic quality and added visual effects on towers for every equipped item.
+
+New Tower – Fort Tower (Higher Cost):
+
+Level 1: 2 weak archers.
+
+Level 2: 3 weak archers and 1 harpoon thrower.
+
+Level 3: 4 weak archers, 1 harpoon thrower, and 1 small cannon.
+
+Level 4A (Legion Command): 8 weak archers and 4 small cannons.
+
+Level 4B (Fishing Nest): 8 harpoon throwers.
+
+New Tower – Daemon Tower:
+
+Level 1: Launches a small burst of fire at a nearby area with a slow attack rate.
+
+Level 2: Launches a medium-wide burst of fire at a nearby area with a slow attack rate.
+
+Level 3: Launches a large, wide burst of fire at a nearby area with a slow attack rate.
+
+Level 4A (Devil Tower): Places a pillar of fire in a target area that detonates after a delay.
+
+Level 4B (Hell's Gate): Periodically drops a meteor that summons a demon to fight for you for 10s.
+
+v0.86
+New Content
+New Tower – Barracks: Every 10s, spawns a unit that leaps from the tower to the nearest path to engage enemies:
+
+Level 1: Villager thrusting with a pitchfork.
+
+Level 2: Swordsman attacking in wide arcs.
+
+Level 3: Sapper rushing enemies and detonating.
+
+Level 4A: Converts into a Wizard Tower firing lightning arcs.
+
+Level 4B: Produces 3 mines that detonate every 15s.
+
+v0.85
+New Content & UI
+Tier 4 Dual-Branch Upgrades: Added a 4th upgrade tier for existing towers with two choices per tower:
+
+Fan: 360-degree coverage, or pull (suck) enemies instead of pushing.
+
+Arrow: Giant Ballista (+100% projectile power, leaves a ground collision for 6s), or Arrow Rain (10 projectiles in a circle at a slower attack speed).
+
+Harpoon: Sniper Nest (+200% projectile speed and +100% range), or Electrical Harpoons (creates an area lightning arc on hit).
+
+Cannon: Leaves a crater on the ground for 3s, or switches to a physical boulder launcher.
+
+Menus: Made the main menu more vertical and upgraded the tower menu with icons.
+
+Balance
+Updated rarity drop rates to 50% Common, 30% Uncommon, 15% Rare, and 5% Legendary.
+
+Made Hex upgrades 30% rarer than standard upgrades.
+
+v0.84
+New Content
+New Bosses:
+
+Wave 5 – Necromancer: Medium-heavy boss; spawns 4 nearby skeletons every 5s.
+
+Wave 10 – Mother Spider: Medium-heavy boss; leaps forward every 3s and shoots webs more frequently than normal spiders.
+
+Wave 15 – Graveyard Keeper: Periodically spawns tombstones that burst into 10 skeletons after 3s.
+
+Wave 20 – Undead Cyclops: Large unit that hurls giant rocks at towers, stunning them for 2s.
+
+Wave 25 – Warlock: Summons 1 Demon Guard in front of itself.
+
+Wave 30 – Golem: Splits into 3 small golems upon death.
+
+Wave 35 – Lord of Skeletons: Surrounded by 15 spinning rib-bones acting as physical rigid bodies.
+
+Wave 40 – Undead Dragon: Heavy unit that burns towers down with fire breath.
+
+Wave 45 – Skeleton Balloon: Flying unit with 20-hit durability that drops bombs onto towers.
+
+Wave 50 – Lord of Time: Medium-heavy boss with a regenerating 3-hit shield; slows projectiles near it by 90% upon entering the arena.
+
+New Enemies:
+
+Spiders: Low weight; fire webs that reduce tower attack speed by 30% for 5s.
+
+Skeleton Horseman: Fast-moving, very light unit.
+
+Undead Orc: Medium unit that gains +50% movement speed for 1s when hit (Rage).
+
+Spawner Markers & Bestiary: Added circular ground markers and a dark portal model at enemy spawn points (preventing collision and water placement near spawns on start), scaled enemy spawn counts from Level 1 to 50, and added a pre-game Bestiary listing enemies and their stats.
+
+Removals
+Removed the Flame Tower.
+
+Removed the Force Next Wave button.
+
+v0.83
+New Content & Systems
+Maps & Difficulty Modes: Added 2 new maps across Easy, Medium, and Hard difficulties (50-level cap), selectable after pressing Start.
+
+Hex Skill Tree & Inventory (6-Slot Cap):
+
+Choose from 3 random upgrades on Wave 1 and every 3 waves thereafter.
+
+Selecting a Hex upgrade locks it permanently into one of 6 Hex skill tree slots (maximum 6 upgrades).
+
+Upgrades and items use four rarities with decreasing appearance rates: Common (Grey), Uncommon (Green), Rare (Blue), and Legendary (Orange).
+
+Tower Item Slots & Live Stats:
+
+Each tower has 2 permanent item slots filled by hovering an item over the tower.
+
+Added live tower stat readouts for Push Power, Health, Attack Speed, Projectiles, and Area Size, dynamically updating with items and upgrades.
+
+Castle Gate Impact: Added a collision effect and animation when enemies crash into the castle gate.
+
+Hex Upgrades
+Uncommon:
+
+Muddy Swamp: Randomly places a muddy swamp blob mid-map that slows enemies by 40%.
+
+Rare:
+
+To Arms!: Adds 2 archers to the castle with Tier 1 Arrow Tower strength and 150% of an archer tower's range.
+
+Cluster Bomb: Converts your skill into a Cluster Bomb with +30% cooldown.
+
+Reinforced Foundations: Increases base range of all towers by +8%.
+
+Legendary:
+
+Freezing Field: Covers the path in snow, reducing enemy speed by 5% and lowering push weight by 10.
+
+Items
+Common:
+
+Commoner Rise: Places a villager on top of the tower with base villager stats that throws rocks.
+
+Metal Coating: +5% push power and +5% area size.
+
+Kinetic Charger: Each second without attacking grants the next shot +1% push power and +1% area size (up to 10 stacks).
+
+Oiled Gears: +6% tower attack speed.
+
+Wooden Wedge: +10% push power, -5% attack speed.
+
+Heavy Base: +8% projectile size and +8% damage, -5% range.
+
+Uncommon:
+
+More Food Rations: +30% attack speed, -10% push power.
+
+Polished Lens: +15% tower range.
+
+Heavy Projectiles: -20% attack speed, +25% push power.
+
+Aerodynamic Fins: +15% projectile speed and +10% tower range.
+
+Vortex Rounds: Projectiles pull enemies toward the explosion center instead of pushing them away; -15% attack speed.
+
+Blunt Tip: +10% area size, -5% push power.
+
+Rusty Nail: Attacks apply a 2s slow (-5% enemy speed) on hit.
+
+Watchdog: Places a dog at the tower base that barks every 8s, lightly pushing nearby enemies back.
+
+Rare:
+
+More Ammo: +1 projectile, -30% attack speed.
+
+Twin-Barrel Rig: Fires 2 smaller projectiles per shot, each with 60% size, 60% damage, and 60% push power.
+
+Rage Potion: Every 20s, grants a +30% attack speed boost for 5s.
+
+Bigger and Better: +20% projectile size and +20% area size, -10% attack speed.
+
+Legendary:
+
+Lightningstorm: Converts the tower into small area lightning bolts that trigger area blasts and instantly destroy enemies (slow attack speed, small area).
+
+Glasscannon: +100% projectile size/area and push power, -90% attack speed.
+
+Ricochet Stone: Projectiles bounce to 1 additional nearby target for 50% damage and 50% push power.
+
+Gatling Overdrive: +250% attack speed, -60% projectile size, and -75% push power, turning heavy/AoE towers into rapid-fire suppression setups.
