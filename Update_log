@@ -1,3 +1,37 @@
+V.0.96
+
+Change pause to main menu button, (organize that)
+Add kill count to tower, every 100/200/500/1000 kills tower get veterancy level, that gives 3% attack speed/area size/push power
+Add new enemies:
+Flying winged skeleton - medium speed flies directly into castle gate,1 life point
+Shielded knight skeleton - shields 3 hits
+Siege tower, big very slowly moving - survives 10 hits, spawns blob of 20 skeletons on death
+
+V.0.95
+after selecting tower build phase, highlight all spots that tower can be place
+nerf wizard tower attack speed by 40%, projectile speed slower by 40%
+nerf demon tower attack speed by 20%
+nerf catapult attack speed by 30%
+add 5s to lightning bolt kill evolution cooldown
+reduce cooldown of harpoon skill by 5s
+boost arrow tower and fort attack speed by 15%
+rise the multiplier of enemy count by 40%
+add a feature that highlight where you can place a tower, when building
+add fifth upgrade for every tower that cost a 1000 gold
+arrow - arrow minigun
+canon - mini nuke tower
+fan - freezing fan
+harpoon - 30% faster attack speed
+village - 20 villagers
+barracks - spawn ogre
+fort - 12 mini canons
+deamon - slows nearby enemies by 40%
+net thrower - 50% bigger area size
+wizard tower - on hit freezes enemy for 4s
+update the description view of tower upgrades
+add ability to reroll the item rewards for 200 gold
+change the map easy have 1 portal medium 2 portals with connected lane hard have 2 separate lines with 2 portals
+
 v0.94  
 
 Mobile user interface optimalization
